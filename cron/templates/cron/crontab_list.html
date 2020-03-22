@@ -1,0 +1,9 @@
+{% extends 'layout.html'%}
+{% block content %}
+<a href="{% url 'cron:new'%}"><button>새로운 크론탭 만들기</button></a>
+<br/>
+{% for cron_data in crontab_list%}
+    <a href="{% url 'cron:delete' cron_data.pk %}"><button>X</button></a>{{forloop.counter}}번째 아이템
+    <a href="{% url 'cron:detail' cron_data.pk %}">{{cron_data.get_file_name}}</a>
+{% endfor %}
+{% endblock content %}
